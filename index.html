@@ -1362,6 +1362,73 @@
             color: var(--text-dim);
         }
 
+        .testi-card-with-thumb {
+            padding-bottom: 90px;
+        }
+
+        .testi-thumb {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            width: 100px;
+            height: 60px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(0,0,0,.45);
+            cursor: pointer;
+            padding: 0;
+            display: grid;
+            place-items: center;
+        }
+
+        .testi-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .review-image-fullscreen {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0,0,0,.92);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .review-image-fullscreen.active {
+            display: flex;
+        }
+
+        .review-image-fullscreen img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 24px;
+            box-shadow: 0 32px 96px rgba(0,0,0,.55);
+        }
+
+        .review-image-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,.16);
+            color: #fff;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 12px 32px rgba(0,0,0,.3);
+        }
+
         /* ============================================================
    FAQ
    ============================================================ */
@@ -2433,6 +2500,11 @@
         <img id="pavosFullscreenImg" src="https://i.imgur.com/YIH99ww.png" alt="Venta de Pavos ampliada">
     </div>
 
+    <div id="reviewImageFullscreen" class="review-image-fullscreen" onclick="toggleReviewImage(false)">
+        <button class="review-image-close" onclick="event.stopPropagation(); toggleReviewImage(false);">×</button>
+        <img id="reviewImageFullscreenImg" src="https://i.imgur.com/VNKpOJ5.png" alt="Review preview">
+    </div>
+
     <!-- ====== CLUB FORTNITE ====== -->
     <section id="club">
         <div class="container">
@@ -2504,17 +2576,20 @@
                 <div class="divider"></div>
             </div>
             <div class="testimonios-grid">
-                <div class="testi-card reveal">
+                <div class="testi-card reveal testi-card-with-thumb">
                     <div class="testi-stars">★★★★★</div>
-                    <p class="testi-text">"Conseguí mi espíritu legendario en menos de 10 minutos. El tradeo fue
+                    <p class="testi-text">"Conseguí mi espíritu Punto cero Gominola en menos de 10 minutos. El tradeo fue
                         rapidísimo y sin problemas. 100% recomendado."</p>
                     <div class="testi-user">
                         <div class="testi-avatar">😎</div>
                         <div>
-                            <div class="testi-name">xXShadowFn</div>
-                            <div class="testi-handle">@xXShadowFn · PC</div>
+                            <div class="testi-name">mastercum_69</div>
+                            <div class="testi-handle">@mastercum_69 · PC</div>
                         </div>
                     </div>
+                    <button class="testi-thumb" onclick="showReviewImage('https://i.imgur.com/oeHhrxP.png')">
+                        <img src="https://i.imgur.com/oeHhrxP.png" alt="Preview mastercum_69">
+                    </button>
                 </div>
                 <div class="testi-card reveal delay-1">
                     <div class="testi-stars">★★★★★</div>
@@ -2564,17 +2639,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="testi-card reveal delay-3">
+                <div class="testi-card reveal delay-3 testi-card-with-thumb">
                     <div class="testi-stars">★★★★★</div>
-                    <p class="testi-text">"Pedido VIP bestial. Lo prioricé y me lo entregaron en 5 minutos.
-                        Definitivamente siempre elegiré la opción prioritaria."</p>
+                    <p class="testi-text">"Me dieron el punto cero normal y el punto cero de gomita! es de Confiar!"</p>
                     <div class="testi-user">
                         <div class="testi-avatar">👑</div>
                         <div>
-                            <div class="testi-name">VIPKingFN</div>
-                            <div class="testi-handle">@VIPKingFN · Switch</div>
+                            <div class="testi-name">Joas_Plus_Trap</div>
+                            <div class="testi-handle">@Joas_Plus_Trap · PC</div>
                         </div>
                     </div>
+                    <button class="testi-thumb" onclick="showReviewImage('https://i.imgur.com/VNKpOJ5.png')">
+                        <img src="https://i.imgur.com/VNKpOJ5.png" alt="Preview Joas_Plus_Trap">
+                    </button>
                 </div>
             </div>
         </div>
@@ -3377,6 +3454,22 @@
             } else {
                 overlay.classList.remove("active");
             }
+        }
+
+        function toggleReviewImage(show) {
+            const overlay = document.getElementById("reviewImageFullscreen");
+            if (!overlay) return;
+            if (show) {
+                overlay.classList.add("active");
+            } else {
+                overlay.classList.remove("active");
+            }
+        }
+
+        function showReviewImage(url) {
+            const img = document.getElementById("reviewImageFullscreenImg");
+            if (img) img.src = url;
+            toggleReviewImage(true);
         }
 
         /* ---- INIT ---- */
