@@ -1031,45 +1031,68 @@
             background: var(--black);
         }
 
+        .club-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 36px;
+        }
+
         .club-card {
             background: linear-gradient(135deg, #0a0a1a 0%, #0d0a20 40%, #100a2a 100%);
             border: 1px solid var(--purple-dim);
             border-radius: var(--r-lg);
             overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             box-shadow: 0 0 60px rgba(139, 92, 246, .2);
-        }
-
-        .club-img {
-            background: linear-gradient(135deg, var(--surface3), #0d0a22);
-            min-height: 320px;
+            padding: 32px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            font-size: 5rem;
+            text-align: center;
+            min-height: 450px;
         }
 
-        .club-img img {
+        .club-card-img {
+            width: 100%;
+            height: 180px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+        }
+
+        .club-card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
-        .club-img-placeholder {
-            opacity: .25;
+        .club-card.featured {
+            border-color: rgba(255, 141, 255, .65);
+            box-shadow: 0 0 80px rgba(255, 131, 255, .22);
+            transform: translateY(-4px);
         }
 
-        .club-glow {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, rgba(139, 92, 246, .2) 0%, transparent 70%);
+        .club-card-header {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 18px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(255,193,7,.22), rgba(255,214,0,.12));
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
         }
 
-        .club-body {
-            padding: 40px;
+        .club-card-title {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 14px;
+            color: #fff;
         }
 
         .club-price-wrap {
@@ -1084,32 +1107,69 @@
             line-height: 1;
         }
 
-        .club-price-period {
+        .club-price-old {
             font-family: var(--font-sub);
-            font-size: .9rem;
+            font-size: 1rem;
             color: var(--text-dim);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 6px;
         }
 
-        .club-benefits {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
+        .club-price-new {
+            font-family: var(--font-head);
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #fff;
         }
 
-        .club-benefit {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+        .club-card-copy {
             font-family: var(--font-sub);
-            font-size: .95rem;
+            font-size: 1rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-top: 10px;
         }
 
-        .club-benefit-icon {
-            color: var(--purple);
-            font-size: 1.1rem;
-            flex-shrink: 0;
-            margin-top: 1px;
+        .club-note {
+            margin-top: 32px;
+            font-family: var(--font-sub);
+            font-size: 1rem;
+            color: var(--text-dim);
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .club-actions {
+            margin-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .club-actions .btn {
+            min-width: 180px;
+        }
+
+        .club-actions .btn-green {
+            background: linear-gradient(135deg, #24d43d, #0fa336);
+            color: #fff;
+            border: none;
+        }
+
+        .club-actions .btn-green:hover {
+            filter: brightness(1.05);
+        }
+
+        .club-actions .btn-purple {
+            background: linear-gradient(135deg, #9b4dff, #6a2dff);
+            color: #fff;
+            border: none;
+        }
+
+        .club-actions .btn-purple:hover {
+            filter: brightness(1.05);
         }
 
         /* ============================================================
@@ -2188,79 +2248,6 @@
         </div>
     </section>
 
-
-    <!-- ====== PAVOS ====== -->
-    <section id="pavos">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-sub">⚡ Por Regalo</p>
-                <h2 class="section-title glow-yellow">Venta de Pavos</h2>
-                <div class="divider"></div>
-                <p class="section-sub" style="margin-top:10px;">Precios en Dólares y mas Monedas · Entrega inmediata por regalo</p>
-            </div>
-            <div class="pavos-grid" style="justify-content:center;">
-                <div class="pavos-image-wrap reveal" onclick="togglePavosFullscreen(true)">
-                    <img id="pavosMainImg" src="https://i.imgur.com/YIH99ww.png" alt="Venta de Pavos" class="pavos-main-img">
-                    <div class="pavos-overlay">Haz clic para agrandar</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="pavosFullscreenOverlay" class="image-fullscreen-overlay" onclick="togglePavosFullscreen(false)">
-        <button class="close-fullscreen" onclick="event.stopPropagation(); togglePavosFullscreen(false);">×</button>
-        <img id="pavosFullscreenImg" src="https://i.imgur.com/YIH99ww.png" alt="Venta de Pavos ampliada">
-    </div>
-
-    <!-- ====== CLUB FORTNITE ====== -->
-    <section id="club">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-sub">✨ Membresía Premium</p>
-                <h2 class="section-title glow-purple">Club Fortnite</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="club-card reveal" style="animation:glow-pulse 3s ease-in-out infinite;">
-                <div class="club-img">
-                    <!-- Reemplaza con tu imagen: <img src="club-fortnite.png" alt="Club Fortnite"> -->
-                    <span class="club-img-placeholder">🎪</span>
-                    <div class="club-glow"></div>
-                    <div style="position:absolute;top:16px;left:16px;"><span class="badge badge-purple">✨ MENSUAL</span>
-                    </div>
-                </div>
-                <div class="club-body">
-                    <p
-                        style="font-family:var(--font-sub);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:8px;">
-                        Club Fortnite</p>
-                    <h3 style="font-family:var(--font-head);font-size:1.8rem;font-weight:900;margin-bottom:6px;">
-                        Membresía<br>Mensual</h3>
-                    <div class="club-price-wrap">
-                        <div class="club-price">$3.99</div>
-                        <div class="club-price-period">por mes · precio especial</div>
-                    </div>
-                    <div class="club-benefits">
-                        <div class="club-benefit"><span class="club-benefit-icon">✦</span><span>1,000 Pavos mensuales
-                                para gastar</span></div>
-                        <div class="club-benefit"><span class="club-benefit-icon">✦</span><span>Skin exclusiva del Club
-                                cada mes</span></div>
-                        <div class="club-benefit"><span class="club-benefit-icon">✦</span><span>Acceso al Pase de
-                                Batalla incluido</span></div>
-                        <div class="club-benefit"><span class="club-benefit-icon">✦</span><span>Paquete de inicio con
-                                artículos exclusivos</span></div>
-                        <div class="club-benefit"><span class="club-benefit-icon">✦</span><span>Rol VIP en nuestro
-                                Discord</span></div>
-                        <div class="club-benefit"><span class="club-benefit-icon">✦</span><span>Entrega vía regalo en
-                                24–48 horas</span></div>
-                    </div>
-                    <a href="https://wa.me/51917039670?text=Hola%2C+quiero+comprar+el+Club+Fortnite" target="_blank"
-                        class="btn btn-purple btn-lg" style="width:100%;">
-                        🎪 Comprar Club Fortnite
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ====== RESERVAS ====== -->
     <section id="reservas">
         <div class="container">
@@ -2351,6 +2338,91 @@
                         💬 Contactar por WhatsApp
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== PAVOS ====== -->
+    <section id="pavos">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-sub">⚡ Por Regalo</p>
+                <h2 class="section-title glow-yellow">Venta de Pavos</h2>
+                <div class="divider"></div>
+                <p class="section-sub" style="margin-top:10px;">Precios en Dólares y mas Monedas · Entrega inmediata por regalo</p>
+            </div>
+            <div class="pavos-grid" style="justify-content:center;">
+                <div class="pavos-image-wrap reveal" onclick="togglePavosFullscreen(true)">
+                    <img id="pavosMainImg" src="https://i.imgur.com/YIH99ww.png" alt="Venta de Pavos" class="pavos-main-img">
+                    <div class="pavos-overlay">Haz clic para agrandar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="pavosFullscreenOverlay" class="image-fullscreen-overlay" onclick="togglePavosFullscreen(false)">
+        <button class="close-fullscreen" onclick="event.stopPropagation(); togglePavosFullscreen(false);">×</button>
+        <img id="pavosFullscreenImg" src="https://i.imgur.com/YIH99ww.png" alt="Venta de Pavos ampliada">
+    </div>
+
+    <!-- ====== CLUB FORTNITE ====== -->
+    <section id="club">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-sub">✨ Membresía Premium</p>
+                <h2 class="section-title glow-purple">Club Fortnite</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="club-cards reveal">
+                <div class="club-card">
+                    <div class="club-card-img">
+                        <img src="https://wsrv.nl/?url=https%3A%2F%2Fcms-assets.unrealengine.com%2Fcm6l5gfpm05kr07my04cqgy2x%2Fresize%3Dwidth%3A1024%2Fquality%3Dvalue%3A80%2Foutput%3Dformat%3Awebp%2Fcmpvkorbf908q06n42n287nlo&w=512&q=90&output=webp" alt="Club Fortnite">
+                    </div>
+                    <div class="club-card-header">1 mes de Club</div>
+                    <div class="club-price-wrap">
+                        <span class="club-price-old">$/ 8.99</span>
+                        <div class="club-price-new">$/ 7.29</div>
+                    </div>
+                    <div class="club-card-copy">Acceso mensual con beneficios exclusivos y entrega rápida.</div>
+                </div>
+                <div class="club-card featured">
+                    <div class="club-card-img">
+                        <img src="https://wsrv.nl/?url=https%3A%2F%2Fcms-assets.unrealengine.com%2Fcm6l5gfpm05kr07my04cqgy2x%2Fresize%3Dwidth%3A1024%2Fquality%3Dvalue%3A80%2Foutput%3Dformat%3Awebp%2Fcmpvkorbf908q06n42n287nlo&w=512&q=90&output=webp" alt="Club Fortnite">
+                    </div>
+                    <div class="club-card-header">3 meses de Club</div>
+                    <div class="club-price-wrap">
+                        <div class="club-price-new">$/ 14.65</div>
+                    </div>
+                    <div class="club-card-copy">Mejor valor por tres meses de membresía y regalos especiales.</div>
+                </div>
+                <div class="club-card">
+                    <div class="club-card-img">
+                        <img src="https://wsrv.nl/?url=https%3A%2F%2Fcms-assets.unrealengine.com%2Fcm6l5gfpm05kr07my04cqgy2x%2Fresize%3Dwidth%3A1024%2Fquality%3Dvalue%3A80%2Foutput%3Dformat%3Awebp%2Fcmpvkorbf908q06n42n287nlo&w=512&q=90&output=webp" alt="Club Fortnite">
+                    </div>
+                    <div class="club-card-header">4 meses de Club</div>
+                    <div class="club-price-wrap">
+                        <div class="club-price-new">$/ 16.70</div>
+                    </div>
+                    <div class="club-card-copy">Cuatro meses de Club con soporte directo en Discord.</div>
+                </div>
+                <div class="club-card">
+                    <div class="club-card-img">
+                        <img src="https://wsrv.nl/?url=https%3A%2F%2Fcms-assets.unrealengine.com%2Fcm6l5gfpm05kr07my04cqgy2x%2Fresize%3Dwidth%3A1024%2Fquality%3Dvalue%3A80%2Foutput%3Dformat%3Awebp%2Fcmpvkorbf908q06n42n287nlo&w=512&q=90&output=webp" alt="Club Fortnite">
+                    </div>
+                    <div class="club-card-header">6 meses de Club</div>
+                    <div class="club-price-wrap">
+                        <span class="club-price-old">$/ 23.50</span>
+                        <div class="club-price-new">$/ 19.99</div>
+                    </div>
+                    <div class="club-card-copy">Suscripción de medio año con descuento exclusivo y prioridad.</div>
+                </div>
+            </div>
+            <div class="club-note reveal">
+                toda compra se hace por interno al dueno del discord o al whatsapp que este mi user de discord: <strong>kevintx28</strong> o al whatsapp <strong>+051 917 039 670</strong>
+            </div>
+            <div class="club-actions reveal">
+                <a href="https://discord.gg/D9a4hBcfQm" target="_blank" class="btn btn-purple btn-lg">Discord</a>
+                <a href="https://wa.me/51917039670" target="_blank" class="btn btn-green btn-lg">WhatsApp</a>
             </div>
         </div>
     </section>
