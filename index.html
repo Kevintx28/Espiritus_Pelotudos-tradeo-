@@ -2118,10 +2118,10 @@
                 <p class="section-sub">⚡ Por Regalo</p>
                 <h2 class="section-title glow-yellow">Venta de Pavos</h2>
                 <div class="divider"></div>
-                <p class="section-sub" style="margin-top:10px;">Precios en dólares · Entrega inmediata por regalo</p>
+                <p class="section-sub" style="margin-top:10px;">Precios en Dólares y mas Monedas · Entrega inmediata por regalo</p>
             </div>
-            <div class="pavos-grid" id="pavosGrid">
-                <!-- Generado por JS -->
+            <div class="pavos-grid" style="justify-content:center;">
+                <img src="https://i.imgur.com/YIH99ww.png" alt="Venta de Pavos" style="max-width:100%;height:auto;border-radius:18px;box-shadow:0 16px 48px rgba(0,0,0,.24);">
             </div>
         </div>
     </section>
@@ -2846,15 +2846,6 @@
 },
         ];
 
-        const PAVOS = [
-            { qty: 1000, price: "$4.99", img: "", tag: "Popular" },
-            { qty: 2800, price: "$12.99", img: "", tag: "Mejor valor", featured: true },
-            { qty: 5000, price: "$20.99", img: "", tag: "Oferta" },
-            { qty: 13500, price: "$49.99", img: "", tag: "Pack Máximo" },
-            { qty: 1000, price: "$3.99", img: "", tag: "Con Club" },
-            { qty: 500, price: "$2.99", img: "", tag: "Starter" },
-        ];
-
         let reserveTimers = {};
 
         /* ---- HELPERS ---- */
@@ -2983,28 +2974,6 @@
             updateCounter();
         }
 
-
-        /* ---- RENDER PAVOS ---- */
-        function renderPavos() {
-            const grid = document.getElementById("pavosGrid");
-            grid.innerHTML = "";
-            PAVOS.forEach(p => {
-                const msg = encodeURIComponent(`Hola, quiero comprar ${p.qty} Pavos (${p.price}).`);
-                grid.innerHTML += `
-    <div class="pavo-card${p.featured ? " featured" : ""}">
-      <div class="pavo-img">
-        ${p.img ? `<img src="${p.img}" alt="${p.qty} Pavos">` : `<span>🪙</span>`}
-      </div>
-      <div class="pavo-body">
-        ${p.tag ? `<div class="pavo-tag">${p.tag}</div>` : ""}
-        <div class="pavo-qty">${p.qty.toLocaleString()}</div>
-        <div class="pavo-unit">PAVOS</div>
-        <div class="pavo-price">${p.price} <span>USD</span></div>
-        <a href="https://wa.me/51917039670?text=${msg}" target="_blank" class="btn btn-yellow" style="width:100%;">Comprar</a>
-      </div>
-    </div>`;
-            });
-        }
 
         /* ---- GLOBAL STOCK COUNTER ---- */
         function updateCounter() {
@@ -3177,7 +3146,6 @@
         /* ---- INIT ---- */
         document.addEventListener("DOMContentLoaded", () => {
             renderCatalog();
-            renderPavos();
             updateCounter();
             createParticles();
             initReveal();
