@@ -854,182 +854,6 @@
         /* ============================================================
    TRADEO
    ============================================================ */
-        #tradeo {
-            background: var(--black);
-        }
-
-        .tradeo-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .tradeo-form-card {
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: 32px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-family: var(--font-sub);
-            font-size: .85rem;
-            font-weight: 600;
-            letter-spacing: .06em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            margin-bottom: 8px;
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            background: var(--surface3);
-            border: 1px solid var(--border);
-            color: var(--text);
-            border-radius: var(--r);
-            padding: 12px 16px;
-            font-family: var(--font-body);
-            font-size: .95rem;
-            transition: border-color .18s, box-shadow .18s;
-            outline: none;
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            border-color: var(--blue);
-            box-shadow: 0 0 0 3px var(--blue-glow);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%239090B0'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
-        }
-
-        .priority-toggle {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .priority-option {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .priority-option input {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .priority-label {
-            display: block;
-            padding: 16px;
-            text-align: center;
-            border: 2px solid var(--border);
-            border-radius: var(--r);
-            transition: all .18s;
-            cursor: pointer;
-        }
-
-        .priority-option input:checked+.priority-label {
-            border-color: var(--yellow);
-            background: rgba(255, 215, 0, .08);
-        }
-
-        .priority-label-title {
-            font-family: var(--font-sub);
-            font-size: .95rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .priority-label-desc {
-            font-size: .78rem;
-            color: var(--text-dim);
-        }
-
-        .tradeo-board {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .tradeo-post {
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: var(--r);
-            padding: 16px;
-            transition: border-color .18s;
-        }
-
-        .tradeo-post:hover {
-            border-color: var(--purple-dim);
-        }
-
-        .tradeo-post-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .tradeo-user {
-            font-family: var(--font-sub);
-            font-weight: 700;
-            font-size: .9rem;
-            color: var(--yellow);
-        }
-
-        .tradeo-time {
-            font-size: .75rem;
-            color: var(--text-dim);
-        }
-
-        .tradeo-arrows {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            font-family: var(--font-sub);
-            font-size: .85rem;
-        }
-
-        .tradeo-spirit {
-            padding: 4px 10px;
-            background: var(--surface3);
-            border-radius: 6px;
-        }
-
-        .tradeo-arrow {
-            color: var(--blue);
-            font-size: 1.2rem;
-        }
-
-        .tradeo-comment {
-            font-size: .82rem;
-            color: var(--text-dim);
-            margin-top: 8px;
-        }
 
         /* ============================================================
    PAVOS
@@ -1708,6 +1532,74 @@
             padding: 32px;
         }
 
+        .trade-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1001;
+            background: rgba(0, 0, 0, .82);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .trade-modal-overlay.open {
+            display: flex;
+        }
+
+        .trade-modal-panel {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px;
+        }
+
+        .trade-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .trade-modal-header h2 {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--yellow);
+        }
+
+        .trade-modal-body {
+            font-family: var(--font-sub);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .trade-modal-body p {
+            margin: 16px 0 10px;
+        }
+
+        .trade-account-list {
+            margin: 0 0 20px 18px;
+            padding: 0;
+        }
+
+        .trade-account-list li {
+            margin-bottom: 10px;
+        }
+
+        .trade-modal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
         .admin-header {
             display: flex;
             justify-content: space-between;
@@ -2111,7 +2003,6 @@
             </div>
             <div class="nav-links">
                 <a href="#catalogo">Catálogo</a>
-                <a href="#tradeo">Tradeo</a>
                 <a href="#pavos">Pavos</a>
                 <a href="#club">Club</a>
                 <a href="#reservas">Reservas</a>
@@ -2125,7 +2016,6 @@
     </nav>
     <div class="mobile-menu" id="mobileMenu">
         <a href="#catalogo" onclick="toggleMenu()">Catálogo</a>
-        <a href="#tradeo" onclick="toggleMenu()">Tradeo</a>
         <a href="#pavos" onclick="toggleMenu()">Pavos</a>
         <a href="#club" onclick="toggleMenu()">Club Fortnite</a>
         <a href="#reservas" onclick="toggleMenu()">Reservas</a>
@@ -2157,10 +2047,6 @@
                 <div class="hero-stat">
                     <div class="hero-stat-num" id="heroAgo" style="color:var(--red)">0</div>
                     <div class="hero-stat-label">Agotados</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-num" style="color:var(--purple)">+50</div>
-                    <div class="hero-stat-label">Tradeos</div>
                 </div>
             </div>
         </div>
@@ -2224,80 +2110,6 @@
         </div>
     </section>
 
-    <!-- ====== TRADEO ====== -->
-    <section id="tradeo">
-        <div class="container">
-            <div class="section-header reveal">
-                <p class="section-sub">🔄 Intercambio P2P</p>
-                <h2 class="section-title glow-blue">Sistema de Tradeo</h2>
-                <div class="divider"></div>
-            </div>
-            <div class="tradeo-wrap">
-                <!-- Form -->
-                <div class="tradeo-form-card reveal">
-                    <h3 style="font-family:var(--font-sub);font-weight:700;font-size:1.2rem;margin-bottom:22px;">
-                        📝 Publicar mi Tradeo
-                    </h3>
-                    <div class="form-group">
-                        <label class="form-label">Nombre de Fortnite</label>
-                        <input type="text" class="form-input" id="tradeNick" placeholder="Tu nick en Fortnite">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Espíritu que ofreces</label>
-                        <select class="form-select" id="tradeOffer">
-                            <option value="">Selecciona espíritu...</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Espíritu que buscas</label>
-                        <select class="form-select" id="tradeWant">
-                            <option value="">Selecciona espíritu...</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Comentario</label>
-                        <textarea class="form-textarea" id="tradeComment"
-                            placeholder="Condiciones del tradeo, nivel mínimo, etc..."></textarea>
-                    </div>
-                    <!-- Tipo de pedido -->
-                    <p
-                        style="font-family:var(--font-sub);font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;">
-                        Tipo de Pedido</p>
-                    <div class="priority-toggle">
-                        <label class="priority-option">
-                            <input type="radio" name="priority" value="normal" checked>
-                            <div class="priority-label">
-                                <span class="priority-label-title">⏳ Normal</span>
-                                <span class="priority-label-desc">Entrega según cola</span>
-                            </div>
-                        </label>
-                        <label class="priority-option">
-                            <input type="radio" name="priority" value="vip">
-                            <div class="priority-label">
-                                <span class="priority-label-title">👑 VIP</span>
-                                <span class="priority-label-desc">Atención preferente · Pago extra</span>
-                            </div>
-                        </label>
-                    </div>
-                    <button class="btn btn-purple" style="width:100%;margin-top:8px;" onclick="publishTrade()">
-                        🚀 Publicar Tradeo
-                    </button>
-                </div>
-
-                <!-- Board -->
-                <div>
-                    <h3
-                        style="font-family:var(--font-sub);font-weight:700;font-size:1.1rem;margin-bottom:16px;display:flex;align-items:center;gap:8px;">
-                        📋 Tablero de Tradeos
-                        <span class="badge badge-blue" id="tradeCount">3</span>
-                    </h3>
-                    <div class="tradeo-board" id="tradeBoard">
-                        <!-- Generado por JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ====== PAVOS ====== -->
     <section id="pavos">
@@ -2848,6 +2660,30 @@
         </div>
     </div>
 
+    <!-- ====== TRADE INFO MODAL ====== -->
+    <div class="trade-modal-overlay" id="tradeModal">
+        <div class="trade-modal-panel">
+            <div class="trade-modal-header">
+                <h2>Importante</h2>
+                <button class="admin-close" onclick="closeTradeModal()">✕</button>
+            </div>
+            <div class="trade-modal-body">
+                <p>Para obtener espíritus gratis, agrega estas cuentas de fortnite y unete al Discord:</p>
+                <ul class="trade-account-list">
+                    <li><strong>Kevintx28</strong> 🟢 Disponible · Tradeos habilitados ACTIVO</li>
+                    <li><strong>Kristalyz08</strong> 🟢 Disponible · Tradeos habilitados ACTIVO</li>
+                    <li><strong>Alaoil</strong> 🔴 Sin polvos disponibles para compra de espíritus · <strong>SIN POLVOS</strong></li>
+                    <li><strong>OmarS4</strong> 🟢 Disponible · Tradeos habilitados ACTIVO</li>
+                </ul>
+                <p>Luego manda mensaje al Grupo de Discord o WhatsApp:</p> <br>
+                <div class="trade-modal-actions">
+                    <a href="https://discord.gg/883jMEqkE" target="_blank" class="btn btn-blue">Discord</a>
+                    <a href="https://wa.me/51917039670?text=Hola%2C+quiero+contactar+sobre+los+esp%C3%ADritus+gratis" target="_blank" class="btn btn-green">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- TOAST -->
     <div class="toast" id="toast"></div>
 
@@ -3020,11 +2856,6 @@
         ];
 
         let reserveTimers = {};
-        let tradeList = [
-            { nick: "xXShadowFn", offer: "Espíritu de Fuego", want: "Espíritu Dorado", comment: "Solo tradeo por un Legendario 😤", priority: "vip", time: "Hace 5 min" },
-            { nick: "NightStrikker", offer: "Espíritu del Viento", want: "Espíritu Nebulosa", comment: "Negociable el nivel mínimo", priority: "normal", time: "Hace 12 min" },
-            { nick: "GalaxyStar99", offer: "Espíritu de Hielo", want: "Espíritu del Sol", comment: "Urgente, contáctenme por WA", priority: "normal", time: "Hace 20 min" },
-        ];
 
         /* ---- HELPERS ---- */
         const rarityLabels = { legendary: "Legendario", epic: "Épico", rare: "Raro", uncommon: "Poco Común", common: "Común", galaxy: "Galaxia", royal: "Real", zerop: "Punto Cero" };
@@ -3078,8 +2909,7 @@
                 const actionsHtml = isAgotado || isGalaxy ? "" : (s.status === "reservado"
                     ? `<div class="spirit-actions"><button class="btn btn-outline" disabled style="flex:1;opacity:.5;">Reservado</button></div>`
                     : `<div class="spirit-actions">
-          <button class="btn btn-purple btn-sm" onclick="reserveSpirit(${s.id})">🔒 Reservar</button>
-          <a href="https://wa.me/51917039670?text=Hola%2C+quiero+comprar+el+esp%C3%ADritu+${encodeURIComponent(s.name)}" target="_blank" class="btn btn-yellow btn-sm">💬 Comprar</a>
+          <button class="btn btn-yellow btn-sm" onclick="openTradeModal()">💬 Gratis!</button>
         </div>`);
 
                 const card = document.createElement("div");
@@ -3153,76 +2983,6 @@
             updateCounter();
         }
 
-        /* ---- RENDER TRADE BOARD ---- */
-        function renderTrades() {
-            const board = document.getElementById("tradeBoard");
-            board.innerHTML = "";
-            document.getElementById("tradeCount").textContent = tradeList.length;
-            tradeList.forEach(t => {
-                const vip = t.priority === "vip";
-                board.innerHTML += `
-    <div class="tradeo-post">
-      <div class="tradeo-post-header">
-        <span class="tradeo-user">🎮 ${t.nick}</span>
-        <div style="display:flex;align-items:center;gap:8px;">
-          ${vip ? `<span class="badge badge-yellow">👑 VIP</span>` : ""}
-          <span class="tradeo-time">${t.time}</span>
-        </div>
-      </div>
-      <div class="tradeo-arrows">
-        <span class="tradeo-spirit">${t.offer}</span>
-        <span class="tradeo-arrow">⇄</span>
-        <span class="tradeo-spirit">${t.want}</span>
-      </div>
-      <div class="tradeo-comment">💬 ${t.comment}</div>
-    </div>`;
-            });
-        }
-
-        /* populate selects */
-        function populateSelects() {
-            const offer = document.getElementById("tradeOffer");
-            const want = document.getElementById("tradeWant");
-            SPIRITS.filter(s => !s.galaxy).forEach(s => {
-                offer.innerHTML += `<option value="${s.name}">${s.name}</option>`;
-                want.innerHTML += `<option value="${s.name}">${s.name}</option>`;
-            });
-        }
-
-        /* ---- PUBLISH TRADE ---- */
-        function publishTrade() {
-            const nick = document.getElementById("tradeNick").value.trim();
-            const offer = document.getElementById("tradeOffer").value;
-            const want = document.getElementById("tradeWant").value;
-            const comment = document.getElementById("tradeComment").value.trim();
-            const priority = document.querySelector("input[name='priority']:checked").value;
-            if (!nick || !offer || !want) { showToast("⚠ Completa todos los campos", "error"); return; }
-            tradeList.unshift({ nick, offer, want, comment: comment || "Sin comentarios", priority, time: "Ahora mismo" });
-            renderTrades();
-            document.getElementById("tradeNick").value = "";
-            document.getElementById("tradeComment").value = "";
-            showToast("🚀 Tradeo publicado correctamente");
-            if (priority === "vip") {
-                addAdminOrder(nick, offer);
-            }
-        }
-
-        function addAdminOrder(nick, spirit) {
-            const orders = document.getElementById("adminOrders");
-            if (!orders) return;
-            const div = document.createElement("div");
-            div.className = "admin-order";
-            div.innerHTML = `
-    <div class="order-info">
-      <span style="font-weight:700;">${nick}</span>
-      <span class="order-meta"> · ${spirit} · <span class="badge badge-yellow" style="font-size:.65rem;">VIP</span></span>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center;">
-      <span class="badge badge-orange">PENDIENTE</span>
-      <button class="btn btn-sm" style="background:var(--green);color:#000;padding:5px 12px;" onclick="this.closest('.admin-order').remove()">Completado</button>
-    </div>`;
-            orders.prepend(div);
-        }
 
         /* ---- RENDER PAVOS ---- */
         function renderPavos() {
@@ -3268,6 +3028,12 @@
             document.getElementById("adminLogin").style.display = "block";
             document.getElementById("adminPass").value = "";
             document.getElementById("adminError").style.display = "none";
+        }
+        function openTradeModal() {
+            document.getElementById("tradeModal").classList.add("open");
+        }
+        function closeTradeModal() {
+            document.getElementById("tradeModal").classList.remove("open");
         }
         function checkAdmin() {
             const p = document.getElementById("adminPass").value;
@@ -3411,9 +3177,7 @@
         /* ---- INIT ---- */
         document.addEventListener("DOMContentLoaded", () => {
             renderCatalog();
-            renderTrades();
             renderPavos();
-            populateSelects();
             updateCounter();
             createParticles();
             initReveal();
